@@ -1,0 +1,21 @@
+﻿The Relationship Between Movie Runtime and Box Office
+Abstract
+The goal of this project is to see what effect the runtime of a movie has on a movie’s box office in order to better inform movie studios on how long their feature films should be.  A Lasso regression model shows that there is a positive correlation between runtime and box office performance across different genres, even while controlling for other relevant factors.
+Data
+The data used in this project is the top 200 grossing movies from each year from 2015 to 2019.  The data was scraped from boxofficemojo.com and parsed using beautiful soup.  
+Algorithms
+Feature Engineering
+1. Polynomial terms for continuous variables
+2. Interaction terms between budget, runtime, genres, distributors and MPAA rating
+3. Films missing a budget were assigned the median budget of the rest of the dataset
+Models
+Linear Regression was used as the first iteration, but a Lasso regression was used to reduce model variance and exclude variables with little predictive value
+Model Evaluation and Selection
+The dataset of 100 movies was broken into a training set of 800 lines and a testing set of 200 lines.  The model was cross-validated on 5 folds of the training set.  The cross-validation process yielded an alpha value of 615,098.  After the model was refined, it was tested on the final testing set, and the Mean Absolute Error on this test was $95,724,302.
+The model’s coefficients for runtime (29,351,259), runtime of comedy (-39,388,815) and runtime of action (45,355,300), when unscaled, predict an increase in box office for movies of every genre with an increase in runtime.  
+Tools
+* Python for Web Scraping
+* Beautiful Soup for parsing html
+* Pandas for storing data
+* Scikit-learn for modeling
+* Matplotlib for visualization
